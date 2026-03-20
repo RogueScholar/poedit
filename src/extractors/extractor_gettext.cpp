@@ -179,7 +179,8 @@ public:
 
         if (output.failed())
         {
-            err.log_all();
+            // Total failure - don't log warnings, focus on the hard errors
+            err.log_errors();
             BOOST_THROW_EXCEPTION(ExtractionException(ExtractionError::Unspecified));
         }
 
