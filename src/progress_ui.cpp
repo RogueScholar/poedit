@@ -43,6 +43,9 @@
 #include <wx/button.h>
 #include <wx/config.h>
 
+#include <boost/algorithm/string/join.hpp>
+
+
 namespace
 {
 
@@ -293,7 +296,18 @@ wxWindowPtr<wxMessageDialog> ProgressWindow::CreateErrorDialog(const wxArrayStri
             text = wxString::Format(wxPLURAL("%d error occurred.", "%d errors occurred.", (int)errors.size()), (int)errors.size());
         else
             text = m_errorMessage;
-        extended = wxJoin(errors, '\n', 0);
+
+        // keep the error window reasonably sized:
+        const size_t maxShown = 6;
+        std::vector<wxString> errorsToShow(errors.begin(), errors.begin() + std::min(errors.size(), maxShown));
+        extended = boost::algorithm::join(errorsToShow, L"\n");
+
+        if (errors.size() > maxShown)
+        {
+            int leftover = int(errors.size() - maxShown);
+            extended += '\n';
+            extended += wxString::Format(wxPLURAL(_(L"…and %d more error"), _(L"…and %d more errors"), leftover), leftover);
+        }
     }
 
     wxWindowPtr<wxMessageDialog> dlg(new wxMessageDialog(GetParent(), text, MSW_OR_OTHER(m_title->GetLabel(), ""), wxOK | wxICON_ERROR));
