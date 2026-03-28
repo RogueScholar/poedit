@@ -81,7 +81,7 @@ jobs:
       with:
         # see a7fdeb1b and https://mastodon.social/@siracusa/115491845898322390
         xcode-version: '~26.0.0'
-    - uses: sersoft-gmbh/xcodebuild-action@v3
+    - uses: sersoft-gmbh/xcodebuild-action@v4
       with:
         workspace: Poedit.xcworkspace
         scheme: Poedit
