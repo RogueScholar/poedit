@@ -627,7 +627,7 @@ void ManagerFrame::OnUpdateProject(wxCommandEvent&)
                 }
              }
         },
-        [=]()
+        [progress, this]()
         {
             UpdateListCat();
         });
