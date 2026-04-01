@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="packages\Gettext.Tools.0.26.0\build\Gettext.Tools.props" Condition="Exists('packages\Gettext.Tools.0.26.0\build\Gettext.Tools.props')" />
-  <Import Project="packages\Tools.InnoSetup.6.4.2\build\Tools.InnoSetup.props" Condition="Exists('packages\Tools.InnoSetup.6.4.2\build\Tools.InnoSetup.props')" />
+  <Import Project="packages\Tools.InnoSetup.6.7.0\build\Tools.InnoSetup.props" Condition="Exists('packages\Tools.InnoSetup.6.7.0\build\Tools.InnoSetup.props')" />
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
       <Configuration>Debug</Configuration>
