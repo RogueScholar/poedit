@@ -34,6 +34,11 @@ add_homebrew_paths() {
 add_homebrew_paths gnu-sed make bison curl
 export PATH
 
+# ...but prevent Homebrew libraries from being used
+unset PKG_CONFIG_PATH
+export PKG_CONFIG_LIBDIR=$SDKROOT/usr/lib/pkgconfig:$SDKROOT/usr/share/pkgconfig
+
+
 # Check that the tools have appropriate versions:
 if ! make --version 2>/dev/null | grep -q 'GNU Make'; then
     echo "Error: GNU make required (brew install make)." >&2
